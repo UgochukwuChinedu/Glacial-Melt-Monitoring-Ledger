@@ -11,12 +11,13 @@ Blockchain technology to create immutable, timestamped records of remote-sensed 
 ## 🚀 Features
 
 - 📊 **Immutable Records**: All glacier measurements are permanently stored on-chain
-- 🔐 **Authorized Data Sources**: Only verified sources can submit measurements  
+- 🔐 **Authorized Data Sources**: Only verified sources can submit measurements
 - ⏰ **Timestamped Data**: Each measurement includes block height timestamps
 - 📈 **Melt Rate Calculations**: Automatic volume loss and melt rate analytics
 - 🔍 **Public Dashboard Data**: All records publicly queryable for transparency
 - ✅ **Data Verification**: Owner can verify measurements for accuracy
 - 🌡️ **Temperature Tracking**: Environmental conditions recorded with measurements
+- 🔍 **Active Glacier Enumeration**: Query all active glacier IDs for comprehensive monitoring
 
 ## 🛠️ Usage
 
@@ -60,6 +61,12 @@ Blockchain technology to create immutable, timestamped records of remote-sensed 
 (contract-call? .Glacial-Melt-Monitoring-Ledger calculate-melt-rate u1)
 ```
 
+### Get Active Glacier IDs
+
+```clarity
+(contract-call? .Glacial-Melt-Monitoring-Ledger get-active-glacier-ids)
+```
+
 ## 📋 Contract Functions
 
 ### Public Functions
@@ -81,6 +88,7 @@ Blockchain technology to create immutable, timestamped records of remote-sensed 
 - `get-source-measurement-count(principal)` - Get count of measurements by source
 - `get-contract-stats()` - Get contract statistics
 - `calculate-melt-rate(glacier-id)` - Calculate glacier melt rate and volume loss
+- `get-active-glacier-ids()` - Get list of all active glacier IDs
 
 ## 🏗️ Setup
 
