@@ -228,6 +228,20 @@
     )
 )
 
+(define-public (update-glacier (glacier-id uint) (new-name (string-ascii 100)) (new-location (string-ascii 100)))
+    (let
+        (
+            (glacier-data (unwrap! (map-get? glaciers glacier-id) err-glacier-not-found))
+        )
+        (asserts! (or (is-eq tx-sender contract-owner) (is-eq tx-sender (get created-by glacier-data))) err-not-authorized)
+        (asserts! (get active glacier-data) err-invalid-data)
+        (asserts! (> (len new-name) u0) err-invalid-data)
+        (asserts! (> (len new-location) u0) err-invalid-data)
+        (map-set glaciers glacier-id (merge glacier-data { name: new-name, location: new-location }))
+        (ok true)
+    )
+)
+
 (define-public (emergency-pause)
     (begin
         (asserts! (is-eq tx-sender contract-owner) err-owner-only)

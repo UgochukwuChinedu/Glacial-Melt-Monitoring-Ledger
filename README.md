@@ -171,7 +171,28 @@ MIT License - feel free to use for climate monitoring initiatives.
 
 This system enables transparent climate accountability by providing:
 - 📍 Verifiable glacier monitoring data
-- 🔍 Public access to environmental records  
+- 🔍 Public access to environmental records
 - 📈 Historical trend analysis capabilities
 - 🌍 Global collaborative climate tracking
 - ⚡ Real-time environmental change documentation
+
+## 🆕 Glacier Metadata Updates
+
+Empower glacier creators and contract owners to refine glacier records dynamically. This functionality introduces seamless metadata adjustments, ensuring data accuracy without disrupting monitoring workflows. By allowing targeted updates to name and location fields, the system maintains historical integrity while supporting real-time corrections for enhanced environmental tracking precision.
+
+### Key Capabilities
+- 🔧 **Flexible Updates**: Modify glacier names and locations post-registration
+- 🛡️ **Secure Access**: Restricted to original creators or contract administrators
+- ✅ **Validation Checks**: Enforce data quality with non-empty string requirements
+- 🔄 **Active Glacier Focus**: Updates limited to currently active glaciers only
+
+### Usage Example
+
+```clarity
+(contract-call? .Glacial-Melt-Monitoring-Ledger update-glacier
+    u1
+    "Updated Glacier Name"
+    "New Location Coordinates")
+```
+
+This feature elevates the ledger's adaptability, fostering a more robust and user-friendly platform for global climate data management. #ClimateTech #BlockchainInnovation #EnvironmentalMonitoring
