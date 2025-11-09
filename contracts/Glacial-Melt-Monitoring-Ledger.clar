@@ -40,6 +40,7 @@
 
 (define-map glacier-latest-measurement uint uint)
 (define-map source-measurement-count principal uint)
+(define-map source-verified-count principal uint)
 
 (define-public (authorize-source (source principal))
     (begin
@@ -152,7 +153,17 @@
 
 (define-private (verify-single-measurement (measurement-id uint))
     (match (map-get? measurements measurement-id)
-        measurement-data (map-set measurements measurement-id (merge measurement-data { verified: true }))
+        measurement-data
+        (let
+            (
+                (recorder (get recorded-by measurement-data))
+                (current-verified (default-to u0 (map-get? source-verified-count recorder)))
+            )
+            (begin
+                (map-set measurements measurement-id (merge measurement-data { verified: true }))
+                (map-set source-verified-count recorder (+ current-verified u1))
+            )
+        )
         false
     )
 )
@@ -178,6 +189,23 @@
 
 (define-read-only (get-source-measurement-count (source principal))
     (default-to u0 (map-get? source-measurement-count source))
+)
+
+(define-read-only (get-source-reputation (source principal))
+    (let
+        (
+            (total-measurements (default-to u0 (map-get? source-measurement-count source)))
+            (verified-measurements (default-to u0 (map-get? source-verified-count source)))
+        )
+        (ok
+            {
+                source: source,
+                total-measurements: total-measurements,
+                verified-measurements: verified-measurements,
+                reputation-score: (if (> total-measurements u0) (/ (* verified-measurements u100) total-measurements) u0)
+            }
+        )
+    )
 )
 
 (define-read-only (get-contract-stats)

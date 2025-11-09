@@ -196,3 +196,21 @@ Empower glacier creators and contract owners to refine glacier records dynamical
 ```
 
 This feature elevates the ledger's adaptability, fostering a more robust and user-friendly platform for global climate data management. #ClimateTech #BlockchainInnovation #EnvironmentalMonitoring
+
+## 🏆 Data Source Reputation Tracking
+
+Transform data source credibility into a quantifiable metric that enhances measurement reliability and fosters accountability. This innovative approach calculates reputation scores based on verified submissions, creating a transparent trust framework for environmental data contributors.
+
+### Key Capabilities
+- 📊 **Reputation Scoring**: Percentage-based metric reflecting verified measurement accuracy
+- 🔍 **Transparent Metrics**: Public access to total and verified measurement counts per source
+- 🛡️ **Automated Tracking**: Seamless integration with existing verification workflows
+- 📈 **Incentive Alignment**: Encourages high-quality data submission through reputation visibility
+
+### Usage Example
+
+```clarity
+(contract-call? .Glacial-Melt-Monitoring-Ledger get-source-reputation 'SP1HTBVD3JG9C05J7HBJTHGR0GGW7KXW28M5JS8QE)
+```
+
+This enhancement revolutionizes data quality assurance, establishing a self-regulating ecosystem where reputation drives environmental monitoring excellence. #DataQuality #ReputationSystem #ClimateData
